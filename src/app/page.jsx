@@ -21,10 +21,11 @@ const Login = () => {
     ) {
       console.log("Invalid Credentials!");
       alert('Invalid Credentials!');
+      router.push('/register');
     } else if (resdata.status === 500) {
       console.log(
         "Server error!"
-      );
+      )
       alert('Server error!');
     } else {
       alert('Login successfull!');
@@ -34,8 +35,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-black-50">
+      <div className="max-w-md w-full p-6 bg-black rounded-md shadow-md">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form onSubmit={(e) => {
           e.preventDefault();
@@ -47,7 +48,7 @@ const Login = () => {
           <div className="mb-4">
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-black-600"
             >
               Username
             </label>
@@ -55,13 +56,13 @@ const Login = () => {
               type="text"
               id="username"
               name="username"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="mt-1 p-2 w-full border rounded-md text-gray-600"
             />
           </div>
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-600"
+              className="block text-sm font-medium text-black-600"
             >
               Password
             </label>
@@ -69,7 +70,7 @@ const Login = () => {
               type="password"
               id="password"
               name="password"
-              className="mt-1 p-2 w-full border rounded-md"
+              className="mt-1 p-2 w-full border rounded-md text-gray-600"
             />
           </div>
           <button
@@ -78,6 +79,11 @@ const Login = () => {
           >
             Login
           </button>
+          <a
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 end-5"
+          >
+            register
+          </a>
         </form>
       </div>
     </div>

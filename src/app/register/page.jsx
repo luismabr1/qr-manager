@@ -29,8 +29,8 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="max-w-md w-full p-6 bg-white rounded-md shadow-md">
+        <div className="min-h-screen flex items-center justify-center bg-black-50">
+            <div className="max-w-md w-full p-6 bg-black rounded-md shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Register</h2>
                 <form onSubmit={(e) => {
                     e.preventDefault();
@@ -50,7 +50,7 @@ const Login = () => {
                             type="text"
                             id="username"
                             name="username"
-                            className="mt-1 p-2 w-full border rounded-md"
+                            className="mt-1 p-2 w-full border rounded-md text-gray-600"
                         />
                     </div>
                     <div className="mb-4">
@@ -64,7 +64,7 @@ const Login = () => {
                             type="password"
                             id="password"
                             name="password"
-                            className="mt-1 p-2 w-full border rounded-md"
+                            className="mt-1 p-2 w-full border rounded-md text-gray-600"
                         />
                     </div>
                     <button

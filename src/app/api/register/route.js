@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 dbConnect();
 
 export async function POST(request) {
-
+    console.log(request.body);
     const { email, password } = await request.json();
 
     const existingUser = await User.findOne({ email });
