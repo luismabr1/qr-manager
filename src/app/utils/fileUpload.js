@@ -1,5 +1,6 @@
 
 import 'dotenv/config'
+import { uploadImage } from './uploadImage'
 
 
 const cloud_name = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
@@ -28,6 +29,7 @@ export const fileUpload = async (file) => {
         const data = await res.json();
         console.log('URL segura de la imagen:', data.secure_url);
         console.log('otros datos de la imagen', data)
+        uploadImage(data)
         return data.secure_url;
     } catch (error) {
         console.error('Error en la solicitud de carga:', error);

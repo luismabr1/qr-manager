@@ -8,7 +8,6 @@ function HomePage() {
     <div className="container-grid">
       <Title />
       <DragAndDrop />
-
     </div>
   );
 }

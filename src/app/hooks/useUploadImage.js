@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import { ImageListType } from "react-images-uploading";
 import { fileUpload } from "../utils/fileUpload.js";
 
 export const useUploadImage = () => {
@@ -19,7 +18,9 @@ export const useUploadImage = () => {
        const url = await fileUpload(images[0].dataURL); 
 
       setLoading(false);
-      if (url) setUrlImage(url);
+      if (url){
+        setUrlImage(url);
+      } 
       else alert('Error, please try again later. ❌')
 
       setImages([]);
