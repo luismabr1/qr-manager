@@ -1,14 +1,16 @@
 "use client";
+import { Title } from "@/../../src/app/components/Title";
+import { DragAndDrop } from "@/../../src/app/components/DragAndDrop";
 
-const Home = () => {
+function HomePage() {
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to My Next.js App</h1>
-        <p className="text-lg text-gray-600">Start building your awesome application!</p>
-      </div>
+    <div className="container-grid">
+      <Title />
+      <DragAndDrop />
+
     </div>
   );
-};
+}
 
-export default Home;
+export default HomePage;
