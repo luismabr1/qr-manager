@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
+import 'dotenv/config'
 
 const nextConfig = {
+    images: {
+        domains: ['res.cloudinary.com'],
+    },
     env: {
-        NEXT_PUBLIC_HOSTNAME: "http://localhost:3001/api/",
-        MONGODB_URI: "mongodb+srv://evhorizon:ThuReal.Dulc3.V3nen0@hotspot1.1xwi126.mongodb.net/login-api",
-        NEXTAUTH_SECRET: "THIS IS USED TO SIGN AND VERIFY JWT TOKENS, REPLACE IT WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
-        NEXTAUTH_URL: "http://localhost:3001",
-        SECRET: "RAMDOM_STRING",
-        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "do9autydw",
-        NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET: "xhjayggk"
+        NEXT_PUBLIC_HOSTNAME: process.env.NEXT_PUBLIC_HOSTNAME,
+        MONGODB_URI: process.env.MONGODB_URI,
+        NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+        SECRET: process.env.SECRET,
+        NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET
     },
 };
 
 export default nextConfig;
+

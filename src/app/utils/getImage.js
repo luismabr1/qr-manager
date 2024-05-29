@@ -2,19 +2,17 @@
 /* const router = useRouter(); */
 import axios from 'axios';
 
-    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "uploadImage";
+    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "getImage";
 
-    export const uploadImage = async (data) => {
-        console.log("Uploading image", data)
+    export const getImage = async (data) => {
+        console.log("Getting image", data)
         
         const requestBody = {
-            id: data.public_id,
-            url: data.secure_url,
-            name: 'image'
+            id: data.id,
         }
 
         await axios
-            .post(baseURL, requestBody)
+            .get(baseURL, requestBody)
             .then(function (res) {
                 console.log(res);
             })
