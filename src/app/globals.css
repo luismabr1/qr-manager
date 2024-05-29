@@ -62,7 +62,7 @@ body{
   gap: 3.5em;
   grid-template-columns: 1fr 1fr;
   place-items: center;
-  width: 90vw;
+  width: 100%;
 }
 
 /* HEADING */
