@@ -2,7 +2,7 @@
 /* const router = useRouter(); */
 import axios from 'axios';
 
-    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "getImage";
+    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "Image";
 
     export const getImage = async (data) => {
         console.log("Getting image", data)

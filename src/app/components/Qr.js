@@ -1,7 +1,7 @@
 import React from 'react';
 import QRCode from 'react-qr-code'
 
-const Qr = ({url}) => {
+export const Qr = ({url}) => {
     
     return (
         <div >
@@ -10,4 +10,3 @@ const Qr = ({url}) => {
     )
 }
 
-export default Qr;

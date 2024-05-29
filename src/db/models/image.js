@@ -5,7 +5,10 @@ const imageSchema = new Schema({
     name: String,
     id: String,
     url: String,
-});
+
+ }, {
+   timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
+ });
 
 let Image;
 if (mongoose.models.Images) {
