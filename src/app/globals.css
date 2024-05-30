@@ -51,7 +51,18 @@ body {
   min-height: 100vh; /* Cambiado de min-width a min-height */
   width: 100%; /* Asegura que el body ocupe todo el ancho de la pantalla */
 }
-
+/* .button_download{
+    background-color: #050505;
+    color: white;
+    border: 'none';
+    padding: '15px 32px'; 
+    text-align: 'center';
+    text-decoration: 'none'; 
+    display: 'inline-block';
+    font-size: '16px';
+    margin: '4px 2px'; 
+    cursor: 'pointer'; 
+} */
 
 .center-flex {
   align-items: center;

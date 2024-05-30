@@ -4,7 +4,7 @@ import {Qr} from '../components/Qr'
 import useGetImage from '../hooks/useGetImage'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Spinner from '../components/Spinner'
 
@@ -14,25 +14,41 @@ const Download = () => {
     const router = useRouter();
     const baseURL = process.env.NEXTAUTH_URL + "preview";
     const imageUrl = useGetImage();
-  
+    const qrRef = useRef(null);
+
+    const downloadCode = () => {
+        const canvas = qrRef.current.querySelector("canvas");
+        if (canvas) {
+          const pngUrl = canvas
+            .toDataURL("image/png")
+            .replace("image/png", "image/octet-stream");
+          let downloadLink = document.createElement("a");
+          downloadLink.href = pngUrl;
+          downloadLink.download = "your_name.png";
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+        }
+    }
+
     useEffect(() => {
-      if (!router.isReady) return;
-  
-      if (status === 'loading') {
-        setTimeout(() => {
-          if (status === 'loading') {
+        if (!router.isReady) return;
+    
+        if (status === 'loading') {
+            setTimeout(() => {
+            if (status === 'loading') {
+                router.push('/');
+            }
+            }, 5000);
+            return;
+        }
+    
+        if (!session) {
             router.push('/');
-          }
-        }, 5000);
-        return;
-      }
-  
-      if (!session) {
-        router.push('/');
-      }
+        }
     }, [session, status, router.isReady]);
   
-    if (status === 'loading' || !session) {
+    if (status === 'loading') {
       return (
         <div className="flex items-center justify-center h-screen">
           <Spinner /> {/* Asegúrate de tener un componente Spinner */}
@@ -40,26 +56,33 @@ const Download = () => {
         </div>
       );
     }
-    return (
-        <>
-        <div className="container-grid">
-            <div style={{ border: '2px solid white' }}>
-                {imageUrl && <Qr url={baseURL} />}
-            </div>
-            <div style={{ position: 'relative', width: '700px' }}>
-                {imageUrl && 
-                    <Image
-                    src={imageUrl}
-                    alt="Imagen pequeña"
-                    width={700} // Ajusta esto al ancho deseado
-                    height={700} // Ajusta esto a la altura deseada
-                    />
-                }
-            </div>
-        </div>
-        </>
-    );
-};
+        return (
+            <>
+                <div className="md:grid md:grid-cols-2 md:gap-4">
+                    <div className="flex flex-col justify-center md:order-1">
+                        <div ref={qrRef} className="border-1 border-white self-center">
+                            {imageUrl && <Qr url={baseURL} />}
+                        </div>
+                        <a className='bg-black text-white py-4 px-8 no-underline inline-block text-lg my-1 mx-0.5 cursor-pointer self-center' onClick={() => downloadCode()}>
+                            Download Code
+                        </a>
+                    </div>
+            
+                    <div className="relative w-full md:w-700 md:order-2">
+                        {imageUrl && 
+                            <Image
+                            src={imageUrl}
+                            alt="Imagen pequeña"
+                            width={700} // Ajusta esto al ancho deseado
+                            height={700} // Ajusta esto a la altura deseada
+                            />
+                        }
+                    </div>
+                </div>
+            </>
+        )
+        
+}
 
 export default Download;
 
