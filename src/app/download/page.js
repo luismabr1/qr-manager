@@ -13,7 +13,6 @@ const Download = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
     const baseURL = process.env.NEXTAUTH_URL + "preview";
-    console.log(baseURL)
     const imageUrl = useGetImage();
   
     useEffect(() => {
