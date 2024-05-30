@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Spinner from '../components/Spinner'
-const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "register";
+const baseURL = process.env.NEXTAUTH_URL;
 
 const Download = () => {
     const { data: session, status } = useSession();
@@ -43,7 +43,7 @@ const Download = () => {
         <>
         <div className="container-grid">
             <div style={{ border: '2px solid white' }}>
-                {imageUrl && <Qr url={baseURL+ '/preview'} />}
+                {imageUrl && <Qr url={baseURL + 'preview'} />}
             </div>
             <div style={{ position: 'relative', width: '700px' }}>
                 {imageUrl && 
