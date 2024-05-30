@@ -13,10 +13,7 @@ function HomePage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.isReady) {
-      router.push('/');
-    }
-
+    if (!router.isReady) return;
     if (status === 'loading') {
       setTimeout(() => {
         if (status === 'loading') {

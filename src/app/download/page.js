@@ -17,9 +17,7 @@ const Download = () => {
     const imageUrl = useGetImage();
   
     useEffect(() => {
-      if (!router.isReady){
-        router.push('/');
-      }
+      if (!router.isReady) return;
   
       if (status === 'loading') {
         setTimeout(() => {
