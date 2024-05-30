@@ -28,8 +28,8 @@ export const fileUpload = async (file) => {
         }
 
         const data = await res.json();
-        console.log('URL segura de la imagen:', data.secure_url);
-        console.log('otros datos de la imagen', data)
+/*         console.log('URL segura de la imagen:', data.secure_url);
+        console.log('otros datos de la imagen', data) */
         uploadImage(data)
         getImage(data.secure_url)
         return data.secure_url;

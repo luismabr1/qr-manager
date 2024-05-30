@@ -5,7 +5,7 @@ import axios from 'axios';
     const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "uploadImage";
 
     export const uploadImage = async (data) => {
-        console.log("Uploading image", data)
+/*         console.log("Uploading image", data) */
         
         const requestBody = {
             id: data.public_id,
@@ -16,7 +16,7 @@ import axios from 'axios';
         await axios
             .post(baseURL, requestBody)
             .then(function (res) {
-                console.log(res);
+/*                 console.log(res); */
             })
             .catch(function (error) {
                 alert('Something went wrong...');

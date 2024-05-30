@@ -40,16 +40,18 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-body{
+body {
   align-items: center;
   background-color: #050505;
   color: #f2f2f2;
   display: flex;
-  font-family: 'Open Sans', sans-serif;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh; /* Cambiado de min-width a min-height */
+  width: 100%; /* Asegura que el body ocupe todo el ancho de la pantalla */
 }
+
 
 .center-flex {
   align-items: center;
@@ -66,11 +68,16 @@ body{
 }
 
 /* HEADING */
-.title{
+.title {
   font-family: 'Montserrat', sans-serif;
   font-size: 3.5em;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-right: 20%; /* Agrega un margen a la derecha */
 }
+
 .container_blob{
   left: 0;
   top: 0;

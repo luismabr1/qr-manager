@@ -9,6 +9,8 @@ const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "login";
 export const options: NextAuthOptions = {
   session: {
     strategy: "jwt",
+    maxAge:  10 * 60, // 24 horas
+    updateAge: 10 * 60, // 24 horas
   },
   providers: [
     GitHubProvider({

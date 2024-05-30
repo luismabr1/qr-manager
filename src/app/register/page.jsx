@@ -18,7 +18,7 @@ const Login = () => {
         await axios
             .post(baseURL, requestBody)
             .then(function (res) {
-                console.log(res);
+/*                 console.log(res); */
                 alert('Account created!');
                 router.push('/');
             })
