@@ -7,15 +7,19 @@ import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Spinner from '../components/Spinner'
-const baseURL = process.env.NEXTAUTH_URL;
+
 
 const Download = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
+    const baseURL = process.env.NEXTAUTH_URL + "preview";
+    console.log(baseURL)
     const imageUrl = useGetImage();
   
     useEffect(() => {
-      if (!router.isReady) return;
+      if (!router.isReady){
+        router.push('/');
+      }
   
       if (status === 'loading') {
         setTimeout(() => {
@@ -43,7 +47,7 @@ const Download = () => {
         <>
         <div className="container-grid">
             <div style={{ border: '2px solid white' }}>
-                {imageUrl && <Qr url={baseURL + 'preview'} />}
+                {imageUrl && <Qr url={baseURL} />}
             </div>
             <div style={{ position: 'relative', width: '700px' }}>
                 {imageUrl && 
