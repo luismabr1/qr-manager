@@ -16,8 +16,10 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-
+    
     const { email, password } = await request.json();
+    console.log(request.body);
+    console.log(email, password);
 
     // Check if email and password are provided
     if (!email || !password) {
@@ -57,10 +59,10 @@ export async function POST(request) {
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
+/*         const token = jwt.sign({ sub: user.id }, serverRuntimeConfig.secret, { expiresIn: '7d' }); */
         return new Response(JSON.stringify({
             success: true,
             status: 200,
-            data: user
         }));
     } else {
         return new Response(JSON.stringify({

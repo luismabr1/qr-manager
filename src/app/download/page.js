@@ -1,16 +1,22 @@
 'use client'
 import React from 'react';
-import {Qr} from '../components/Qr'
+import {Qr} from '../../components/Qr'
 import useGetImage from '../hooks/useGetImage'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Spinner from '../components/Spinner'
+import Spinner from '../../components/Spinner'
 
 
 const Download = () => {
-    const { data: session, status } = useSession();
+    const { data: session, status } = useSession({    
+        required: true,
+        onUnauthenticated() {
+          // The user is not authenticated, handle it here.
+          router.push('/');
+        },});
+    
     const router = useRouter();
     const baseURL = process.env.NEXTAUTH_URL + "preview";
     const imageUrl = useGetImage();
@@ -31,7 +37,7 @@ const Download = () => {
         }
     }
 
-    useEffect(() => {
+/*     useEffect(() => {
         if (!router.isReady) return;
     
         if (status === 'loading') {
@@ -43,15 +49,15 @@ const Download = () => {
             return;
         }
     
-        if (!session) {
+        if (!session || session===null) {
             router.push('/');
         }
-    }, [session, status, router.isReady]);
+    }, [session, status, router.isReady]); */
   
     if (status === 'loading') {
       return (
         <div className="flex items-center justify-center h-screen">
-          <Spinner /> {/* Asegúrate de tener un componente Spinner */}
+          <Spinner /> 
           <p className="ml-4 text-lg">Cargando sesión...</p>
         </div>
       );
@@ -63,18 +69,18 @@ const Download = () => {
                         <div ref={qrRef} className="border-1 border-white self-center">
                             {imageUrl && <Qr url={baseURL} />}
                         </div>
-                        <a className='bg-black text-white py-4 px-8 no-underline inline-block text-lg my-1 mx-0.5 cursor-pointer self-center' onClick={() => downloadCode()}>
+                        <button className='bg-black text-white py-4 px-8 no-underline inline-block text-lg my-1 mx-0.5 cursor-pointer self-center' onClick={() => downloadCode()}>
                             Download Code
-                        </a>
+                        </button>
                     </div>
             
                     <div className="relative w-full md:w-700 md:order-2">
                         {imageUrl && 
                             <Image
-                            src={imageUrl}
-                            alt="Imagen pequeña"
-                            width={700} // Ajusta esto al ancho deseado
-                            height={700} // Ajusta esto a la altura deseada
+                                src={imageUrl}
+                                alt="Imagen pequeña"
+                                width={700} // Ajusta esto al ancho deseado
+                                height={700} // Ajusta esto a la altura deseada
                             />
                         }
                     </div>

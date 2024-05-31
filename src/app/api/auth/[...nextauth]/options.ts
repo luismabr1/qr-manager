@@ -9,8 +9,11 @@ const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "login";
 export const options: NextAuthOptions = {
   session: {
     strategy: "jwt",
-    maxAge:  10 * 60, // 24 horas
-    updateAge: 10 * 60, // 24 horas
+    maxAge:  5 * 60, // 6 min
+    updateAge:  15, // 6 min
+/*     generateSessionToken: () => {
+      return randomUUID?.() ?? randomBytes(32).toString("hex")
+    } */
   },
   providers: [
     GitHubProvider({
@@ -64,13 +67,16 @@ export const options: NextAuthOptions = {
     // signOut: '/auth/signout'
   },
   callbacks: {
-    async jwt({ token, user }) {
-      // the user present here gets the same data as received from DB call  made above -> fetchUserInfo(credentials.opt)
-      return { ...token, ...user };
+    authorized({ req , token }) {
+      if(token) return true // If there is a token, the user is authenticated
     },
     async session({ session, user, token }) {
       // user param present in the session(function) does not recive all the data from DB call -> fetchUserInfo(credentials.opt)
-      return token;
+      return { ...token, ...user, ...session };
+    },
+    async jwt({ token, user }) {
+      // the user present here gets the same data as received from DB call  made above -> fetchUserInfo(credentials.opt)
+      return { ...token, ...user };
     },
   },
   secret: process.env.JWT_SECRET,

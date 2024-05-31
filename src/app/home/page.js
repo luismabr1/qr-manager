@@ -1,18 +1,27 @@
 
 'use client'
-export default HomePage;
-import { Title } from "@/../../src/app/components/Title";
-import { DragAndDrop } from "@/../../src/app/components/DragAndDrop";
-import { useSession } from 'next-auth/react';
+import { Title } from "@/components/Title";
+import { DragAndDrop } from "@/components/DragAndDrop";
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import Spinner from '../components/Spinner'
+/* import { getServerSession } from 'next-auth/next' */
+import { useSession } from "next-auth/react";
+import Spinner from '../../components/Spinner'
 
 function HomePage() {
-  const { data: session, status } = useSession();
+   const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      // The user is not authenticated, handle it here.
+      router.push('/');
+    },
+   }); 
+
+/* 
+  const session = async getServerSession(req, res, authOptions) */
   const router = useRouter();
 
-  useEffect(() => {
+/*    useEffect(() => {
     if (!router.isReady){
       
       return;
@@ -26,25 +35,25 @@ function HomePage() {
       return;
     }
 
-    if (!session) {
+    if (!session || session===null) {
       router.push('/');
     }
   }, [session, status, router.isReady]);
 
-  if (status === 'loading' || !session) {
-    setTimeout(() => {
-      if (status === 'loading') {
+    if (status === 'loading' || !session || session===null) {
+      setTimeout(() => {
+      if (!session) {
         router.push('/');
       }
-    }, 5000);
+    }, 5000); 
     return (
-      
       <div className="flex items-center justify-center h-screen">
-        <Spinner /> {/* Asegúrate de tener un componente Spinner */}
+        <Spinner />  
         <p className="ml-4 text-lg">Cargando sesión...</p>
       </div>
     );
-  }
+    }  */
+
   return (
     <div className="flex flex-col lg:flex-row items-stretch">
       <Title />
@@ -52,6 +61,9 @@ function HomePage() {
     </div>
   )
 }
+
+export default HomePage;
+
 
 
 

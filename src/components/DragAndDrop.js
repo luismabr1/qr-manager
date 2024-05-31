@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageUploading from "react-images-uploading";
-import { useUploadImage } from '../hooks/useUploadImage'
+import { useUploadImage } from '../app/hooks/useUploadImage'
 import { ImageSelected } from './ImageSelected';
 import { BoxDragAndDrop } from './BoxDragAndDrop';
 import { Message } from './Message';
