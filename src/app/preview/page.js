@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import useGetImage from '../../hooks/useGetImage'
+import useGetImage from '../hooks/useGetImage'
 
 export default function FullScreenImage() {
   const imageUrl = useGetImage();
