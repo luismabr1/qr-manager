@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 import AuthProvider from "./context/authprovider";
 import Layout from "../components/Layout";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
               {children}
           </Layout>
           <Analytics />
+          <SpeedInsights/>
         </AuthProvider>
       </body>
     </html>
