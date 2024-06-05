@@ -2,8 +2,10 @@
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
 
 const Login = () => {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [message, setMessage] = useState('');
 
@@ -13,7 +15,7 @@ const Login = () => {
       password: data.password,
       redirect: false,
     });
-
+    console.log(resdata);
     if (
       resdata.status === 400 ||
       resdata.status === 401 ||

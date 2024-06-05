@@ -1,5 +1,3 @@
-
-/* const router = useRouter(); */
 import axios from 'axios';
 
     const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "Image";
@@ -17,7 +15,7 @@ import axios from 'axios';
 /*                 console.log(res); */
             })
             .catch(function (error) {
-                alert('Something went wrong...');
+                alert('Error al traer imagen...');
             });
 
     };

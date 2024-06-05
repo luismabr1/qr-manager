@@ -2,6 +2,7 @@ import dbConnect from "@/db/config/dbConnect";
 import User from "@/db/models/user";
 import bcrypt from 'bcrypt';
 
+
 dbConnect();
 
 
@@ -16,7 +17,6 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-    
     const { email, password } = await request.json();
     console.log(request.body);
     console.log(email, password);
@@ -33,7 +33,7 @@ export async function POST(request) {
 
     // Find the user in the database
     const user = await User.findOne({ email });
-
+    console.log('usuario que se valida', user);
     // If user is not found, return an error
     if (!user) {
         return new Response(JSON.stringify({
@@ -43,23 +43,8 @@ export async function POST(request) {
         }));
     }
 
-    // if(password == user.password) {
-    //     return new Response(JSON.stringify({
-    //         success: true,
-    //         status: 200,
-    //         data: user
-    //     }));
-    // }else{
-    //       return new Response(JSON.stringify({
-    //         success: false,
-    //         status: 400,
-    //         message: 'Wrong Password'
-    //     }));
-    // }
-
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
-/*         const token = jwt.sign({ sub: user.id }, serverRuntimeConfig.secret, { expiresIn: '7d' }); */
         return new Response(JSON.stringify({
             success: true,
             status: 200,

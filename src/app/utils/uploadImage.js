@@ -19,7 +19,7 @@ import axios from 'axios';
 /*                 console.log(res); */
             })
             .catch(function (error) {
-                alert('Something went wrong...');
+                alert('Error al subir...');
             });
 
     };

@@ -23,7 +23,7 @@ const Login = () => {
                 router.push('/');
             })
             .catch(function (error) {
-                alert('Something went wrong...');
+                alert('Error al crear usuario...');
             });
 
     };
