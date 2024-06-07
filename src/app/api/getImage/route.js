@@ -6,10 +6,10 @@ import Image from "@/db/models/image";
 dbConnect();
 
 export async function GET(request) {
-    console.log('llego a api/getImage', request.url);
     const url = new URL(request.url);
+/*     console.log('llego a api/getImage', url); */
     const imageId = url.searchParams.get('id');  
-
+    
     let image;
 
     // Si se proporcionó un id, busca la imagen correspondiente

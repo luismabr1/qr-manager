@@ -2,8 +2,8 @@
 import { useEffect, useState } from 'react'
 
 export default function useGetImage(id) {
-  console.log(id)
   const [imageUrl, setImageUrl] = useState(null);
+  console.log(id)
 
   useEffect(() => {
     // Función para obtener la última imagen de la base de datos
@@ -12,10 +12,12 @@ export default function useGetImage(id) {
         if(id){
           const response = await fetch(`/api/getImage?id=${id}`); // Utiliza el parámetro 'id'
           const data = await response.json();
+          console.log('Entro a fetch con id')
           setImageUrl(data.url);
         }else{
-          const response = await fetch(`/api/getImage`); // Utiliza el parámetro 'id'
+          const response = await fetch(`/api/getImage`); // No utiliza el parámetro 'id'
           const data = await response.json();
+          console.log('Entro a fetch sin id')
           setImageUrl(data.url);
         }
       } catch (error) {
