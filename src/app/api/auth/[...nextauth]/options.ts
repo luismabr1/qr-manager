@@ -79,5 +79,5 @@ export const options: NextAuthOptions = {
       return { ...token, ...user };
     },
   },
-  secret: process.env.JWT_SECRET,
+  secret: process.env.SECRET,
 };

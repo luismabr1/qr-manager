@@ -19,7 +19,7 @@ export default function RootLayout({children}) {
     <html lang="en">
       <body className={inter.className}>
         <AuthProvider>
-          <Layout > {/* Pasa la sesión al componente Layout */}
+          <Layout>
               {children}
           </Layout>
           <Analytics />

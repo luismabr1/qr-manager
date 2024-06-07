@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
-import Link from 'next/link'
 
 const Login = () => {
   const { data: session, status } = useSession();
@@ -39,21 +38,21 @@ const Login = () => {
         <form onSubmit={(e) => {
           e.preventDefault();
           submitHandler({
-            email: e.target.email.value,
+            email: e.target.username.value,
             password: e.target.password.value,
           });
         }}>
           <div className="mb-4">
             <label
-              htmlFor="email"
+              htmlFor="username"
               className="block text-sm font-medium text-black-600"
             >
-              Email
+              Username
             </label>
             <input
               type="text"
-              id="email"
-              name="email"
+              id="username"
+              name="username"
               className="mt-1 p-2 w-full border rounded-md text-gray-600"
             />
           </div>
@@ -78,9 +77,11 @@ const Login = () => {
               >
                 Login
               </button>
-              <Link className=" text-white px-4 py-2  hover:bg-gray-600 end-5" href='/register' >
+              <a
+                className=" text-white px-4 py-2  hover:bg-gray-600 end-5"
+              >
                 Register
-              </Link>
+              </a>
           </div>
           {message && <p>{message}</p>}
         </form>
