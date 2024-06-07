@@ -9,9 +9,15 @@ export default function useGetImage(id) {
     // Función para obtener la última imagen de la base de datos
     async function fetchImage() {
       try {
-        const response = await fetch(`/api/getImage?id=${id}`); // Utiliza el parámetro 'id'
-        const data = await response.json();
-        setImageUrl(data.url);
+        if(id){
+          const response = await fetch(`/api/getImage?id=${id}`); // Utiliza el parámetro 'id'
+          const data = await response.json();
+          setImageUrl(data.url);
+        }else{
+          const response = await fetch(`/api/getImage`); // Utiliza el parámetro 'id'
+          const data = await response.json();
+          setImageUrl(data.url);
+        }
       } catch (error) {
         console.error('Error al obtener la imagen:', error);
       }

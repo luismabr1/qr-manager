@@ -19,7 +19,7 @@ export async function GET(request) {
       
     // Si no se proporcionó un id, o si no se encontró ninguna imagen con el id proporcionado,
     // busca la última imagen ingresada
-    if (!image) {
+    if (!imageId) {
         image = await Image.findOne().sort({ _id: -1 });
     }
 
