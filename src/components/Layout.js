@@ -1,4 +1,4 @@
-  // Layout.js
+   // Layout.js
 import Navbar from "./Navbar";
 
 
@@ -9,10 +9,10 @@ export default function Layout({ children, session }) {
       <main>{children}</main>
     </>
   );
-} 
+}  
 
 /* import Navbar from "./Navbar";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 export default function Layout({ children, session }) {
   const router = useRouter();
