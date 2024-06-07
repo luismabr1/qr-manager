@@ -39,21 +39,21 @@ const Login = () => {
         <form onSubmit={(e) => {
           e.preventDefault();
           submitHandler({
-            email: e.target.username.value,
+            email: e.target.email.value,
             password: e.target.password.value,
           });
         }}>
           <div className="mb-4">
             <label
-              htmlFor="username"
+              htmlFor="email"
               className="block text-sm font-medium text-black-600"
             >
-              Username
+              Email
             </label>
             <input
               type="text"
-              id="username"
-              name="username"
+              id="email"
+              name="email"
               className="mt-1 p-2 w-full border rounded-md text-gray-600"
             />
           </div>
