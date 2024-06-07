@@ -1,10 +1,10 @@
 'use client'
 import React from 'react';
 import {Qr} from '../../components/Qr'
-import useGetImage from '../hooks/useGetImage'
+import useGetImage from '../../hooks/useGetImage'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Spinner from '../../components/Spinner'
 

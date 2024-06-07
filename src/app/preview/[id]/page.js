@@ -1,9 +1,11 @@
 'use client'
 import Image from 'next/image'
-import useGetImage from '../hooks/useGetImage'
+import useGetImage from '../../../hooks/useGetImage'
 
-export default function FullScreenImage() {
-  const imageUrl = useGetImage();
+
+export default function FullScreenImage({params}) {
+  const imageUrl = useGetImage(params.id)
+  console.log(imageUrl)
 
   // Si todavía no se ha obtenido la URL de la imagen, no renderiza el componente Image
   if (!imageUrl) {
@@ -23,8 +25,6 @@ export default function FullScreenImage() {
       />
     </div>
   )
-  
-  
 }
 
 
