@@ -21,8 +21,8 @@ const Download = () => {
     const router = useRouter();
     const imageId = useGetImageId();
     const imageUrl = useGetImage()
-    console.log('se supone que tiene que mandar el id de la imagen', imageUrl);
-    const baseURL = process.env.NEXTAUTH_URL + "preview/" + imageUrl ;
+    console.log('se supone que tiene que mandar el id de la imagen', imageId);
+    const baseURL = process.env.NEXTAUTH_URL + "preview/" + imageId ;
     const qrRef = useRef(null);
 
     const downloadCode = () => {
