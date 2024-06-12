@@ -1,19 +1,20 @@
 'use client'
-import { withRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Link from 'next/link'
 import { signOut } from 'next-auth/react'
 import { useSession } from "next-auth/react";
 
-export default function Navbar({router}) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
   /* const router = withRouter(); */
   const { data: session } = useSession();
 
-   if (typeof window !== 'undefined' && window.location.pathname != '/preview'){
+   if (!pathname.startsWith('/preview')){
       return (
           
-          <nav className="fixed top-0 left-0 w-full z-10 bg-transparent">
+          <nav className="fixed top-0 left-0 w-full z-10 bg-transparent" suppressHydrationWarning>
             <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -80,6 +81,7 @@ export default function Navbar({router}) {
 
   }else return null
 }
+
 
 
 

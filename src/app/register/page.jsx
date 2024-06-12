@@ -12,7 +12,6 @@ const Register = () => {
 
   const validateEmail = (email) => {
     const isValid = validate(email);
-    console.log(res)
     return isValid;
   };
 

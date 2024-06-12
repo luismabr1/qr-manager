@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import {Qr} from '../../components/Qr'
+import useGetImageId from '../../hooks/useGetImageId'
 import useGetImage from '../../hooks/useGetImage'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react';
@@ -18,8 +19,10 @@ const Download = () => {
         },});
     
     const router = useRouter();
-    const baseURL = process.env.NEXTAUTH_URL + "preview";
-    const imageUrl = useGetImage();
+    const imageId = useGetImageId();
+    const imageUrl = useGetImage()
+    console.log('se supone que tiene que mandar el id de la imagen', imageUrl);
+    const baseURL = process.env.NEXTAUTH_URL + "preview/" + imageUrl ;
     const qrRef = useRef(null);
 
     const downloadCode = () => {
@@ -36,23 +39,6 @@ const Download = () => {
           document.body.removeChild(downloadLink);
         }
     }
-
-/*     useEffect(() => {
-        if (!router.isReady) return;
-    
-        if (status === 'loading') {
-            setTimeout(() => {
-            if (status === 'loading') {
-                router.push('/');
-            }
-            }, 5000);
-            return;
-        }
-    
-        if (!session || session===null) {
-            router.push('/');
-        }
-    }, [session, status, router.isReady]); */
   
     if (status === 'loading') {
       return (
@@ -67,7 +53,7 @@ const Download = () => {
                 <div className="md:grid md:grid-cols-2 md:gap-4">
                     <div className="flex flex-col justify-center md:order-1">
                         <div ref={qrRef} className="border-1 border-white self-center">
-                            {imageUrl && <Qr url={baseURL} />}
+                            {imageId && <Qr url={baseURL} />}
                         </div>
                         <button className='bg-black text-white py-4 px-8 no-underline inline-block text-lg my-1 mx-0.5 cursor-pointer self-center' onClick={() => downloadCode()}>
                             Download Code
@@ -75,7 +61,7 @@ const Download = () => {
                     </div>
             
                     <div className="relative w-full md:w-700 md:order-2">
-                        {imageUrl && 
+                        {imageId && 
                             <Image
                                 src={imageUrl}
                                 alt="Imagen pequeña"

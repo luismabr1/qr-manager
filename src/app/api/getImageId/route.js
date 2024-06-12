@@ -7,7 +7,7 @@ dbConnect();
 
 export async function GET(request) {
     const url = new URL(request.url);
-    console.log('llego a api/getImage', url);
+/*     console.log('llego a api/getImage', url); */
     const imageId = url.searchParams.get('id');  
     
     let image;

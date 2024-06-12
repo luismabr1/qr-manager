@@ -18,8 +18,7 @@ export async function GET(request) {
 
 export async function POST(request) {
     const { email, password } = await request.json();
-    console.log(request.body);
-    console.log(email, password);
+
 
     // Check if email and password are provided
     if (!email || !password) {

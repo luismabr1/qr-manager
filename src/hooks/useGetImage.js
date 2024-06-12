@@ -12,12 +12,11 @@ export default function useGetImage(id) {
         if(id){
           const response = await fetch(`/api/getImage?id=${id}`); // Utiliza el parámetro 'id'
           const data = await response.json();
-          console.log('Entro a fetch con id')
           setImageUrl(data.url);
         }else{
           const response = await fetch(`/api/getImage`); // No utiliza el parámetro 'id'
           const data = await response.json();
-          console.log('Entro a fetch sin id')
+          console.log('Entro a fetch sin id', data)
           setImageUrl(data.url);
         }
       } catch (error) {

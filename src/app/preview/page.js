@@ -4,7 +4,11 @@ import useGetImage from '../../hooks/useGetImage'
 
 
 export default function FullScreenImage() {
-  const imageUrl = useGetImage()
+  const imageUrl = /* `useGetImage` is a custom hook being used in the FullScreenImage component. It is
+  responsible for fetching the URL of an image to be displayed in the component.
+  The hook likely handles the logic for fetching the image URL asynchronously and
+  returning it to the component once it is available. */
+  useGetImage()
 
   // Si todavía no se ha obtenido la URL de la imagen, no renderiza el componente Image
   if (!imageUrl) {
