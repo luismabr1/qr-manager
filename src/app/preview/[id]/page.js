@@ -14,15 +14,14 @@ export default function FullScreenImage({params}) {
 
   return (
       <div className="max-w-sm w-full md:max-w-full lg:flex">
-        <Image
-          src={imageUrl}
-          alt="Imagen en pantalla completa"
-          layout="responsive"
-          width={300} // Añade un ancho
-          height={300} // Añade una altura
-          objectFit="contain"
-          objectPosition="center"
-        />
+      <Image
+        src={imageUrl}
+        alt="Imagen en pantalla completa"
+        layout="fixed"
+        objectFit="cover"
+        width={1000} // Agrega el ancho de la imagen aquí
+        height={800} // Agrega la altura de la imagen aquí
+      />
       </div>
     )
 }
