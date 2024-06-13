@@ -1,14 +1,16 @@
 import React from 'react';
+import Link from 'next/link'
 
 
 export const Message = ({ urlImage }) => {
     return (
         <>
             {
-                urlImage && <span className='url-cloudinary-sumbit'>
-                    Your Image uploaded successfully! ✅ 
-                                        <a target='_blank' href='/qr'> View Image</a>
-                                        <button>Ver QR</button>
+                urlImage && 
+                <span className='url-cloudinary-sumbit'>
+                    Imagen subida exitosamente! ✅ 
+                                        <Link target='_blank' href='/download'> Ver QR</Link>
+                                        
                 </span>
             }
         </>

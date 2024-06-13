@@ -3,7 +3,7 @@ import ImageUploading from "react-images-uploading";
 import { useUploadImage } from '../hooks/useUploadImage'
 import { ImageSelected } from './ImageSelected';
 import { BoxDragAndDrop } from './BoxDragAndDrop';
-import { Message } from './Message';
+import { Message } from './Message'; 
 
 export const DragAndDrop = () => {
 
@@ -11,7 +11,7 @@ export const DragAndDrop = () => {
 
   return (
     <>
-      <Message urlImage={urlImage} />
+      <Message urlImage={urlImage} /> 
       <ImageUploading multiple={false} value={images} onChange={handleChange} maxNumber={1}>
         {({
           imageList,

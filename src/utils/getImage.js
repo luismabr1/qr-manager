@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "Image";
+    const baseURL = process.env.NEXT_PUBLIC_HOSTNAME + "getImage";
 
     export const getImage = async (data) => {
 /*         console.log("Getting image", data) */
