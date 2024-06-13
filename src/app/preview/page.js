@@ -16,19 +16,14 @@ export default function FullScreenImage() {
   }
 
   return (
-    <div className="max-w-sm w-full md:max-w-full lg:flex">
+    <div className="w-full h-screen flex items-center justify-center">
       <Image
         src={imageUrl}
         alt="Imagen en pantalla completa"
-        layout='responsive'
-        sizes="(max-width: 768px) 100vw, 50vw"
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
-        width={500}
-        height={300}
-
+        layout="fixed"
+        objectFit="cover"
+        width={1000} // Agrega el ancho de la imagen aquí
+        height={800} // Agrega la altura de la imagen aquí
       />
     </div>
   )
