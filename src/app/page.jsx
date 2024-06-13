@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
+import Link from 'next/link'
+
 
 const Login = () => {
   const { data: session, status } = useSession();
@@ -77,11 +79,12 @@ const Login = () => {
               >
                 Login
               </button>
-              <a
+              <Link
                 className=" text-white px-4 py-2  hover:bg-gray-600 end-5"
+                href='/register'
               >
                 Register
-              </a>
+              </Link>
           </div>
           {message && <p>{message}</p>}
         </form>
