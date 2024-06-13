@@ -20,11 +20,15 @@ export default function FullScreenImage() {
       <Image
         src={imageUrl}
         alt="Imagen en pantalla completa"
-        layout="responsive"
-        width={300} // Añade un ancho
-        height={300} // Añade una altura
-        objectFit="contain"
-        objectPosition="center"
+        layout='responsive'
+        sizes="(max-width: 768px) 100vw, 50vw"
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        width={500}
+        height={300}
+
       />
     </div>
   )
